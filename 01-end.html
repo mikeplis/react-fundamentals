@@ -1,0 +1,24 @@
+<!-- You can use JavaScript to dynamically change the content on the page -->
+
+<html>
+
+<body>
+    <div id="content">
+        <h1>Header</h1>
+        <button onclick="addHeader()">Add</button>
+    </div>
+
+    <script>
+        function addHeader() {
+            let h2 = document.createElement("h2")
+            let textNode = document.createTextNode("Another Header")
+            h2.appendChild(textNode)
+
+            let content = document.getElementById("content")
+            content.appendChild(h2)
+        }
+    </script>
+</body>
+
+
+</html>
