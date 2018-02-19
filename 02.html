@@ -4,8 +4,23 @@
     <div id="root">
         <h1>Hello</h1>
     </div>
+    <script type="text/javascript">
+        function makeElement(type, properties, text) {
+            // create a DOM element with given type
+            const element = document.createElement(type);
 
-    <script>
+            // iterate over 'properties' and assign them to element
+            Object.keys(properties).forEach(prop => {
+                element[prop] = properties[prop];
+            })
+
+            // set textContent on element
+            element.textContent = text;
+
+            return element;
+        }
+
+        const root = document.getElementById('root')
     </script>
 </body>
 

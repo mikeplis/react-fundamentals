@@ -3,19 +3,19 @@
 <html>
 
 <body>
-    <div id="content">
+    <div id="root">
         <h1>Header</h1>
         <button onclick="addHeader()">Add</button>
     </div>
 
-    <script>
+    <script type="text/javascript">
         function addHeader() {
-            let h2 = document.createElement("h2")
-            let textNode = document.createTextNode("Another Header")
-            h2.appendChild(textNode)
+            const h2 = document.createElement("h2")
+            h2.textContent = "Another Header"
+            h2.className = "header"
 
-            let content = document.getElementById("content")
-            content.appendChild(h2)
+            const root = document.getElementById("root")
+            root.appendChild(h2)
         }
     </script>
 </body>

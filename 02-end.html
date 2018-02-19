@@ -4,8 +4,33 @@
     <div id="root">
         <h1>Hello</h1>
     </div>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script type="text/javascript">
+        function makeElement(type, properties, text) {
+            // create a DOM element with given type
+            const element = document.createElement(type);
 
-    <script>
+            // iterate over 'properties' and assign them to element
+            Object.keys(properties).forEach(prop => {
+                element[prop] = properties[prop];
+            })
+
+            // set textContent on element
+            element.textContent = text;
+
+            return element;
+        }
+
+        const root = document.getElementById('root')
+        const h2 = makeElement('h2', { className: 'header' }, 'H2 header')
+        root.appendChild(h2)
+
+        const reactH2 = React.createElement('h2', { className: 'header' }, 'H2 header - React')
+        console.log(reactH2)
+        console.log(h2)
+
+        root.appendChild(reactH2)
     </script>
 </body>
 

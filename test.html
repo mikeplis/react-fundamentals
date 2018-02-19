@@ -1,0 +1,52 @@
+<!-- You can use JavaScript to dynamically change the content on the page -->
+
+<html>
+
+<body>
+    <div id="root">
+        <h1>Header</h1>
+    </div>
+
+    <script>
+
+        function makeElement(type, props, text) {
+            const element = document.createElement(type);
+            Object.keys(props).forEach(prop => {
+                element[prop] = props[prop];
+            })
+            element.textContent = text;
+
+            return element;
+        }
+
+        class Component {
+            constructor(props) {
+                this.props = props
+                this.state = {}
+            }
+
+            setState(newState) {
+                this.state = { ...this.state, newState }
+                this.render()
+            }
+        }
+
+        class MyComponent extends Component {
+            render() {
+                return makeElement('h1', { className: 'header' }, this.props.message)
+            }
+        }
+
+        function render(element, rootElement) {
+            requestAnimationFrame(() => {
+                rootElement.innerHTML = '';
+            })
+        }
+
+        const x = new MyComponent({message: 'hello world'})
+        console.log(x)
+    </script>
+</body>
+
+
+</html>
