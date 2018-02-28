@@ -1,0 +1,35 @@
+<html>
+
+<body>
+    <div id="js-root"></div>
+    <div id="react-root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const jsRoot = document.getElementById("js-root")
+        const reactRoot = document.getElementById("react-root")
+
+        const jsElement = `
+            <div className="container">
+                Hello World
+                <input />
+            </div>
+        `
+
+        const reactElement = (
+            <div className="container">
+                Hello World
+                <input />
+            </div>
+        )
+
+        jsRoot.innerHTML = jsElement;
+        ReactDOM.render(reactElement, reactRoot)
+    </script>
+</body>
+
+
+</html>
