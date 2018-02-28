@@ -1,11 +1,9 @@
 <html>
 
 <body>
-    <div id="root">
-        <h1>Hello</h1>
-    </div>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script type="text/javascript">
         function makeElement(type, properties, text) {
             // create a DOM element with given type
@@ -23,14 +21,12 @@
         }
 
         const root = document.getElementById('root')
-        const h2 = makeElement('h2', { className: 'header' }, 'H2 header')
-        root.appendChild(h2)
+        const header = makeElement('h2', { className: 'my-header' }, 'Header')
+        root.appendChild(header)
 
-        const reactH2 = React.createElement('h2', { className: 'header' }, 'H2 header - React')
-        console.log(reactH2)
-        console.log(h2)
+        const reactHeader = React.createElement('h2', { className: 'my-header' }, 'Header')
 
-        root.appendChild(reactH2)
+        ReactDOM.render(reactHeader, document.getElementById('root'))
     </script>
 </body>
 
