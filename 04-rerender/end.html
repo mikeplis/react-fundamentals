@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <style>
+        .root {
+            border: 1px solid gray;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="js-root" class="root"></div>
+    <div id="react-root" class="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const jsRoot = document.getElementById("js-root")
+        const reactRoot = document.getElementById("react-root")
+
+        function render() {
+            const dateString = new Date().toLocaleTimeString()
+
+            const jsElement = `
+                <div className="container">
+                    <div>JavaScript</div>
+                    <div>${dateString}</div>
+                    <input />
+                </div>
+            `
+            jsRoot.innerHTML = jsElement;
+
+            const reactElement = (
+                <div className="container">
+                    <div>React</div>
+                    <div>{dateString}</div>
+                    <input />
+                </div>
+            )
+            ReactDOM.render(reactElement, reactRoot)
+        }
+
+        setInterval(render, 1000)
+
+    </script>
+</body>
+
+
+</html>
