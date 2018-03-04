@@ -13,16 +13,16 @@
     <script type="text/babel">
         const root = document.getElementById("root")
 
-        function render() {
-            const dateString = new Date().toLocaleTimeString()
-
-            const element = (
-                <div>{dateString}</div>
+        const Counter = (props) => {
+            return (
+                <div>
+                    <div>0</div>
+                    <button>Increment</button>
+                </div>
             )
-            ReactDOM.render(element, root)
         }
 
-        setInterval(render, 1000)
+        ReactDOM.render(<Counter />, root);
 
     </script>
 </body>

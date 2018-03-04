@@ -1,0 +1,62 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById("root")
+
+        function render() {
+            ReactDOM.render(
+                <div>
+                    <Clock />
+                    <Clock />
+                </div>,
+                root
+            )
+        }
+
+        // const Clock = (props) => {
+        //     return (
+        //         <div>{new Date().toLocaleTimeString()}</div>
+        //     )
+        // }
+
+        // class Clock extends React.Component {
+        //     render() {
+        //         return (
+        //             <div>{new Date().toLocaleTimeString()}</div>
+        //         )
+        //     }
+        // }
+
+        // date is now a part of state, but now it doesn't update whenever the component is rerendered
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    date: new Date()
+                }
+            }
+
+            render() {
+                return (
+                    <div>{this.state.date.toLocaleTimeString()}</div>
+                )
+            }
+        }
+
+        setInterval(render, 1000)
+
+    </script>
+</body>
+
+
+</html>
