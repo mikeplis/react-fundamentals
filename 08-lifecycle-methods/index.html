@@ -1,0 +1,37 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById("root")
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    date: new Date()
+                }
+            }
+
+            render() {
+                return (
+                    <div>{this.state.date.toLocaleTimeString()}</div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Clock />, root)
+    </script>
+</body>
+
+
+</html>

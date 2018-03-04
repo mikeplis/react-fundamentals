@@ -1,0 +1,80 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById("root")
+
+        /**
+         * Set up example to demonstrate importance of key prop
+         */
+        const allFruits = [
+            {id: 'a', name: 'apple'},
+            {id: 'b', name: 'banana'},
+            {id: 'c', name: 'cherry'},
+            {id: 'o', name: 'orange'}
+        ]
+
+        class Fruits extends React.Component {
+            constructor(props) {
+                super(props)
+
+                this.state = {
+                    fruits: []
+                }
+            }
+
+            addFruit = () => {
+                this.setState(prevState => {
+                    const numCurrentFruits = prevState.fruits.length;
+                    if (numCurrentFruits >= allFruits.length) {
+                        return { fruits: prevState.fruits }
+                    }
+                    const newFruit = allFruits.find(fruit => !prevState.fruits.includes(fruit))
+                    return { fruits: [...prevState.fruits, newFruit] }
+                })
+            }
+
+            removeFruit = (fruit) => {
+                this.setState(prevState => {
+                    return {
+                        fruits: prevState.fruits.filter(f => f !== fruit)
+                    }
+                })
+            }
+
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.addFruit}>+</button>
+                        <ul>
+                            {this.state.fruits.map(fruit => (
+                                <li>
+                                    <button onClick={() => this.removeFruit(fruit)}>-</button>
+                                    {fruit.name}
+                                    <input />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+
+
+        ReactDOM.render(<Fruits />, root);
+
+    </script>
+</body>
+
+
+</html>
