@@ -1,0 +1,190 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const root = document.getElementById("root")
+
+        // const Counter = (props) => {
+        //     return (
+        //         <div>
+        //             <div>0</div>
+        //             <button>Increment</button>
+        //         </div>
+        //     )
+        // }
+
+        // ReactDOM.render(<Counter />, root);
+
+        /**
+         * This won't work because props are immutable
+         * Props are arguments to a function
+         *   Mutating a function's arguments doesn't cause the function to be called again
+         */
+        // const Counter = (props) => {
+        //     return (
+        //         <div>
+        //             <div>{props.value}</div>
+        //             <button onClick={() => props.value = props.value + 1}>Increment</button>
+        //         </div>
+        //     )
+        // }
+
+        // ReactDOM.render(<Counter value={0} />, root);
+
+        /**
+         * To use state, we first redefine Counter using a class
+         * There is one required method on a React class component: render.
+         *   render must return UI elements
+         * Change props to this.props
+         */
+        // class Counter extends React.Component {
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <div>{this.props.value}</div>
+        //                 <button onClick={() => {}}>Increment</button>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // ReactDOM.render(<Counter value={0} />, root);
+
+        /**
+         * Initialize state in a component's constructor
+         * Read counter from state instead of props
+         */
+        // class Counter extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+
+        //         this.state = {
+        //             value: 0
+        //         }
+        //     }
+
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <div>{this.state.value}</div>
+        //                 <button onClick={() => {}}>Increment</button>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // ReactDOM.render(<Counter />, root);
+
+        /**
+         * Pass increment function to onClick
+         * Attempt to mutate this.state directly, but this won't work
+         *   React doesn't know that this.state has changed, so it doesn't know to check the virtual DOM
+         *   to see if anything needs to be rerendered.
+         *   Need to use this.setState
+         */
+        // class Counter extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+
+        //         this.state = {
+        //             value: 0
+        //         }
+        //     }
+
+        //     increment = () => {
+        //         this.state.value = this.state.value + 1;
+        //     }
+
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <div>{this.state.value}</div>
+        //                 <button onClick={this.increment}>Increment</button>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // ReactDOM.render(<Counter />, root);
+
+        /**
+         * setState accepts an object that will be merged with this.state
+         */
+        // class Counter extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+
+        //         this.state = {
+        //             value: 0
+        //         }
+        //     }
+
+        //     increment = () => {
+        //         this.setState({ value: this.state.value + 1 })
+        //     }
+
+        //     render() {
+        //         return (
+        //             <div>
+        //                 <div>{this.state.value}</div>
+        //                 <button onClick={this.increment}>Increment</button>
+        //             </div>
+        //         )
+        //     }
+        // }
+
+        // ReactDOM.render(<Counter />, root);
+
+        /**
+         * setState also takes a function that gets passed the current state and should return an object.
+         * This form should be used whenever the new state depends on the value of the previous state.
+         * For performance reasons, React may batch multiple setState calls together, merging
+         *   all of the objects together into a single state update, so if you call setState
+         *   multiple times in quick succession, you may see unexpected results
+         */
+        class Counter extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    value: 0
+                }
+            }
+
+            increment = () => {
+                // this.setState({ value: this.state.value + 1 })
+                this.setState(prevState => ({ value: prevState.value + 1 }))
+            }
+
+            incrementBy2 = () => {
+                this.increment()
+                this.increment()
+            }
+
+            render() {
+                return (
+                    <div>
+                        <div>{this.state.value}</div>
+                        <button onClick={this.increment}>Increment</button>
+                        <button onClick={this.incrementBy2}>Increment By 2</button>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<Counter />, root);
+
+    </script>
+</body>
+
+
+</html>
