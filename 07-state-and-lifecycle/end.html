@@ -38,12 +38,31 @@
         // }
 
         // date is now a part of state, but now it doesn't update whenever the component is rerendered
+        // class Clock extends React.Component {
+        //     constructor(props) {
+        //         super(props);
+        //         this.state = {
+        //             date: new Date()
+        //         }
+        //     }
+
+        //     render() {
+        //         return (
+        //             <div>{this.state.date.toLocaleTimeString()}</div>
+        //         )
+        //     }
+        // }
+
         class Clock extends React.Component {
             constructor(props) {
                 super(props);
                 this.state = {
                     date: new Date()
                 }
+            }
+
+            componentDidMount() {
+                this.timer = setInterval(() => {}, 1000)
             }
 
             render() {
