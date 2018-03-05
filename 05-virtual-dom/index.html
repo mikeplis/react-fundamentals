@@ -1,0 +1,22 @@
+<html>
+
+<body>
+    <div id="root" />
+
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const domElement = document.createElement('div')
+        domElement.className = 'container'
+        domElement.textContent = 'Hello World'
+        console.dir(domElement)
+
+        const reactElement = React.createElement('div', { className: 'container' }, 'Hello World')
+        console.dir(reactElement)
+    </script>
+</body>
+
+
+</html>
