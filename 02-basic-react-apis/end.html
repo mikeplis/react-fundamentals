@@ -5,26 +5,13 @@
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script type="text/javascript">
-        function makeElement(type, properties, text) {
-            // create a DOM element with given type
-            const element = document.createElement(type);
-
-            // iterate over 'properties' and assign them to element
-            Object.keys(properties).forEach(prop => {
-                element[prop] = properties[prop];
-            })
-
-            // set textContent on element
-            element.textContent = text;
-
-            return element;
-        }
-
         const root = document.getElementById('root')
-        const header = makeElement('h2', { className: 'my-header' }, 'Header')
+        const header = document.createElement("h2")
+        header.textContent = "Header"
+        header.id = "header"
         root.appendChild(header)
 
-        const reactHeader = React.createElement('h2', { className: 'my-header' }, 'Header')
+        const reactHeader = React.createElement('h2', { id: 'react-header' }, 'React Header')
 
         ReactDOM.render(reactHeader, document.getElementById('root'))
     </script>

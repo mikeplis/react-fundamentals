@@ -2,7 +2,7 @@
 
 <body>
     <div id="root">
-        <h1>Header</h1>
+        <h1 class="main-header">Header</h1>
         <button onclick="addHeader()">Add</button>
     </div>
 
@@ -10,7 +10,7 @@
         function addHeader() {
             const h2 = document.createElement("h2")
             h2.textContent = "Another Header"
-            h2.className = "header"
+            h2.id = "another-header"
 
             const root = document.getElementById("root")
             root.appendChild(h2)
