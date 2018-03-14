@@ -27,7 +27,11 @@
                 if (users.length === 0) {
                     return <div>No users</div>
                 }
-                return null // TODO: fill in
+                return (
+                    <ul>
+                        {users.map(user => <li key={user.id}>{user.name}</li>)}
+                    </ul>
+                )
             }
         }
 
