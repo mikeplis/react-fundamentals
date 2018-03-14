@@ -22,13 +22,13 @@
                 }
             }
 
-            componentDidMount() {
+            componentDidMount = () => {
                 fetch('https://jsonplaceholder.typicode.com/users')
                     .then(res => res.json())
                     .then(data => this.setState({ users: data }))
             }
 
-            render() {
+            render = () => {
                 const users = this.state.users;
                 if (users.length === 0) {
                     return <div>No users</div>
