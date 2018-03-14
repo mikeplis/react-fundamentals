@@ -12,6 +12,11 @@ I'm going to cover some of the fundamental concepts of React and explain how it 
 # Further Reading (or Watching)
 * https://reactjs.org/docs/hello-world.html
     * Official documentation - always a good resource
+    * Some particularly interesting pages:
+        * [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
+        * [Thinking In React](https://reactjs.org/docs/thinking-in-react.html)
+        * [React Without JSX](https://reactjs.org/docs/react-without-jsx.html)
+        * [Reconciliation](https://reactjs.org/docs/reconciliation.html)
 * https://egghead.io/courses/the-beginner-s-guide-to-reactjs
     * My talk was heavily based on this Egghead course
 * https://blog.jfo.click/how-react-do/
